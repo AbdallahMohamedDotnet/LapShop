@@ -1,14 +1,16 @@
-﻿using System;
+﻿using LapShopv2.Models; 
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using LapShopv2.Models; 
-using Microsoft.EntityFrameworkCore;
+using LapShopv2.BL;
 
 namespace LapShopv2.BL
 {
     public class ClsCategories
     {
         MyDbContext context = new MyDbContext();
+        
         public List<TbCategory> GetAll()
         {
             try
@@ -56,6 +58,7 @@ namespace LapShopv2.BL
                     category.UpdatedDate = DateTime.Now;
                     context.Entry(category).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
+                category.CurrentState = 1; 
                 context.SaveChanges();
                 return true;
             }
@@ -64,7 +67,6 @@ namespace LapShopv2.BL
                 return false;
             }
         }
-
         public bool Delete(int id)
         {
             try
@@ -83,3 +85,4 @@ namespace LapShopv2.BL
         }
     }
 }
+

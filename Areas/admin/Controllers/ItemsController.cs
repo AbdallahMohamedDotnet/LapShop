@@ -1,5 +1,6 @@
 ﻿using LapShopv2.BL;
 using LapShopv2.Models;
+using LapShopv2.Utlities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace LapShopv2.Areas.admin.Controllers
@@ -17,6 +18,16 @@ namespace LapShopv2.Areas.admin.Controllers
             ViewBag.lstCategories = oClsCategories.GetAll();
             var items = oClsItem.GetAllItemData(null);
             return View(items);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Save(TbItem Item, List<IFormFile> Files)
+        {
+            //if (!ModelState.IsValid)
+            //    return View("Edit", category);
+            Item.ImageName = await Helper.UploadImage(Files, "Items");
+            oClsItem.Save(Item);
+            return RedirectToAction("List");
         }
 
         public IActionResult Search(int id)

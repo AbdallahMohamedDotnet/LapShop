@@ -6,7 +6,7 @@ namespace LapShopv2.Models;
 
 public partial class MyDbContext : DbContext
 {
-    public MyDbContext()
+     public MyDbContext()
     {
     }
 

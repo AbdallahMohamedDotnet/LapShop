@@ -2,6 +2,7 @@
 using LapShopv2.Models;
 using LapShopv2.BL;
 using Microsoft.AspNetCore.Http.Metadata;
+using LapShopv2.Utlities;
 namespace LapShopv2.Areas.admin.Controllers
 {
     [Area("admin")]
@@ -19,13 +20,13 @@ namespace LapShopv2.Areas.admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(TbCategory category)
+        public async Task<IActionResult> Save(TbCategory category , List<IFormFile> Files)
         {
-
-
+            //if (!ModelState.IsValid)
+            //    return View("Edit", category);
+            category.ImageName = await Helper.UploadImage(Files, "Categories");
             oClsCategories.Save(category);
-
-                return RedirectToAction("List");
+            return RedirectToAction("List");
         }
 
         public IActionResult Delete(int id)
@@ -33,24 +34,6 @@ namespace LapShopv2.Areas.admin.Controllers
             oClsCategories.Delete(id);
             return RedirectToAction("List");
         }
-
-        async Task<string> UploadImage(List<IFormFile> images)
-        {
-            foreach (var image in images)
-            {
-                if (image.Length > 0)
-                {
-                    string ImageName = Guid.NewGuid().ToString() + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
-                    var filepath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/Uploads/categories", ImageName);
-                    using (var stream = System.IO.File.Create(filepath))
-                    {
-                        await image.CopyToAsync(stream);
-                        return ImageName;
-                    }
-                }
-                
-            }
-            return "default.png"; // Return default image if no image is uploaded
-        }
+        
     }
 }

@@ -5,6 +5,14 @@ namespace LapShopv2.Models;
 
 public partial class TbItem
 {
+    public TbItem()
+    {
+        TbItemDiscounts= new List<TbItemDiscount>();
+        TbItemImages = new List<TbItemImage>();
+        TbPurchaseInvoiceItems = new List<TbPurchaseInvoiceItem>();
+        TbSalesInvoiceItems = new List<TbSalesInvoiceItem>();
+        Customers = new List<TbCustomer>();
+    }
     public int ItemId { get; set; }
 
     public string ItemName { get; set; } = null!;
