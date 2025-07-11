@@ -3,6 +3,7 @@ using LapShopv2.Models;
 using LapShopv2.BL;
 using Microsoft.AspNetCore.Http.Metadata;
 using LapShopv2.Utlities;
+using Domains;
 namespace LapShopv2.Areas.admin.Controllers
 {
     [Area("admin")]

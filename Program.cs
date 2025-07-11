@@ -1,3 +1,6 @@
+using LapShopv2.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 namespace LapShopv2
 {
     public class Program
@@ -8,7 +11,7 @@ namespace LapShopv2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<MyDbContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

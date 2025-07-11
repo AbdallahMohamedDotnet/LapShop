@@ -4,7 +4,7 @@ using LapShopv2.Utlities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Domains;
 namespace LapShopv2.Areas.admin.Controllers
 {
     [Area("admin")]

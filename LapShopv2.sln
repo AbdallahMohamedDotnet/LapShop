@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LapShopv2", "LapShopv2.csproj", "{8D2FB50D-32F3-4A9E-A210-B6F84963A687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains", "..\Domains\Domains.csproj", "{553065BA-428B-414A-A5CF-D937D35E798B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "..\BL\BL.csproj", "{EB1AB3A0-21E0-4A18-A22F-EB08F5B6AD10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{8D2FB50D-32F3-4A9E-A210-B6F84963A687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2FB50D-32F3-4A9E-A210-B6F84963A687}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2FB50D-32F3-4A9E-A210-B6F84963A687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553065BA-428B-414A-A5CF-D937D35E798B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553065BA-428B-414A-A5CF-D937D35E798B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553065BA-428B-414A-A5CF-D937D35E798B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553065BA-428B-414A-A5CF-D937D35E798B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1AB3A0-21E0-4A18-A22F-EB08F5B6AD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1AB3A0-21E0-4A18-A22F-EB08F5B6AD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1AB3A0-21E0-4A18-A22F-EB08F5B6AD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1AB3A0-21E0-4A18-A22F-EB08F5B6AD10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
