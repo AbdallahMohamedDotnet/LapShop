@@ -1,20 +1,29 @@
-﻿using LapShopv2.BL;
+﻿using Domains;
+using LapShopv2.BL;
+using LapShopv2.BL.Icontract;
 using LapShopv2.Models;
 using LapShopv2.Utlities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domains;
 namespace LapShopv2.Areas.admin.Controllers
 {
     [Area("admin")]
     public class ItemsController : Controller
     {
+        public ItemsController(I_DB_TBItem item , I_DB_TB_category category , I_DB_ItemType itemType  , I_DB_Os os)
+        {
+            this.oClsItem = item;
+            this.oClsCategories = category;
+            this.oClsItemType = itemType;
+            this.oClsOs = os;
+        }
         MyDbContext context = new MyDbContext();
-        ClsItem oClsItem = new ClsItem(new MyDbContext());
-        ClsCategories oClsCategories = new ClsCategories();
-        ClsItemTypes oClsItemType = new ClsItemTypes();
-        ClsOs oClsOs = new ClsOs();
+        I_DB_TBItem oClsItem ;
+        I_DB_TB_category  oClsCategories ;
+        I_DB_ItemType  oClsItemType ;
+        I_DB_Os  oClsOs ;
 
         public IActionResult List()
         {

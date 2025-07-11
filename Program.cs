@@ -1,6 +1,8 @@
 using LapShopv2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using LapShopv2.BL;
+using LapShopv2.BL.Icontract;
 namespace LapShopv2
 {
     public class Program
@@ -11,9 +13,15 @@ namespace LapShopv2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            // setup the dependency injection for the database context and repositories
             builder.Services.AddDbContext<MyDbContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            var app = builder.Build();
+            // setup the dependency injection for the repositories
+            builder.Services.AddScoped<I_DB_TBItem, ClsItem>();
+            builder.Services.AddScoped<I_DB_TB_category, ClsCategories>();
+            builder.Services.AddScoped<I_DB_ItemType, ClsItemTypes>();
+            builder.Services.AddScoped<I_DB_Os, ClsOs>();
 
+            var app = builder.Build(); 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -83,3 +91,5 @@ namespace LapShopv2
         }
     }
 }
+
+
