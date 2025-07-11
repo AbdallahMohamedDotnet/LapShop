@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label for="exampleInputUsername1">@ResAdmin.LblOs</label>
                             <select class="form-control" asp-for="OsId" asp-items="@(new SelectList(ViewBag.lstOs,"OsId","OsName"))"></select>
-                            <span asp-validation-for="ItemTypeId"></span>
+                            <span asp-validation-for="OsId"></span>
                         </div>
 
                         <div class="form-group">
