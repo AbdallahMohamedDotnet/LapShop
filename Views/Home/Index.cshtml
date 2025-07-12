@@ -1,21 +1,20 @@
-﻿<!--model List<VmHomePage> -->
-
+﻿ @model VmHomePage
 <!-- header end -->
 <!-- Home slider -->
 <section class="p-0 layout-7">
     <div class="slide-1 home-slider">
-        @* @foreach(var slider in Model.lstSliders)
+       @*  @foreach(var slider in model.lstsliders)
         {
             <div>
                 <div class="home text-left">
-                    <img src="~/Uploads/Sliders/@slider.ImageName" alt="" class="bg-img blur-up lazyload">
+                    <img src="~/uploads/sliders/@slider.imagename" alt="" class="bg-img blur-up lazyload">
                     <div class="container-fluid custom-container">
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
                                     <div>
-                                        <h4>@slider.Title</h4>
-                                        <h1>@slider.Description</h1>
+                                        <h4>@slider.title</h4>
+                                        <h1>@slider.description</h1>
                                     </div>
                                 </div>
                             </div>
@@ -23,7 +22,7 @@
                     </div>
                 </div>
             </div>
-        } *@
+        }  *@
     </div>
 </section>
 <!-- Home slider end -->
@@ -31,7 +30,7 @@
 <section class="banner-padding banner-furniture ratio2_1">
     <div class="container-fluid">
         <div class="row partition4">
-            @* @foreach(var category in Model.lstCategories)
+           @*  @foreach(var category in Model.lstCategories)
             {
                 <div class="col-lg-3 col-md-6">
                     <a href="/Items/ItemList/@category.CategoryId">
@@ -75,12 +74,12 @@
 <section class="pt-0 section-b-space ratio_asos">
     <div class="container">
         <div class="row game-product grid-products">
-            @* @foreach (var item in Model.lstAllItems)
+            @foreach (var item in Model.LstAllItem)
             {
                 <div class="product-box col-xl-2 col-lg-3 col-sm-4 col-6">
                     <partial name="ItemBox" model="@item" />
                 </div>
-            } *@
+            }
 
         </div>
     </div>
@@ -89,7 +88,7 @@
 <!-- Parallax banner -->
 <section class="p-0">
     <div class="full-banner parallax text-center p-right">
-        <img src="~/Fontend/images/parallax/28.jpg" alt="" class="bg-img blur-up lazyload">
+        <img src="~/frontend/images/parallax/28.jpg" alt="" class="bg-img blur-up lazyload">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -113,12 +112,12 @@
                     <h5 class="title-border">Under $20 | Free delivery</h5>
                     <div class="offer-slider slide-1">
                         <div>
-                            @* @foreach (var item in Model.lstFreeDelivry)
+                            @foreach (var item in Model.FreeDeliveryItem)
                             {
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html">
                                         <img class="img-fluid blur-up lazyload"
-                                         src="~/Fontend/images/marketplace/6.jpg" alt="">
+                                         src="~/frontend/images/marketplace/6.jpg" alt="">
                                     </a>
                                     <div class="media-body align-self-center">
                                         <div class="rating">
@@ -137,12 +136,12 @@
                             }
                         </div>
                         <div>
-                            @foreach (var item in Model.lstFreeDelivry)
+                            @foreach (var item in Model.FreeDeliveryItem)
                             {
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html">
                                         <img class="img-fluid blur-up lazyload"
-                                         src="~/Fontend/images/marketplace/6.jpg" alt="">
+                                         src="~/frontend/images/marketplace/6.jpg" alt="">
                                     </a>
                                     <div class="media-body align-self-center">
                                         <div class="rating">
@@ -179,30 +178,30 @@
                     <div class="tab-content-cls ratio_asos">
                         <div id="tab-4" class="tab-content active default">
                             <div class="product-4 game-product product-m no-arrow">
-                                @foreach (var item in Model.lstRecommendedItems)
+                                
+                                @foreach (var item in Model.RecommededItem)
                                 {
                                     <div class="product-box">
                                         <partial name="ItemBox" model="@item" />
                                     </div>
                                 }
 
-
                             </div>
                         </div>
                         <div id="tab-5" class="tab-content">
                             <div class="product-4 game-product product-m no-arrow">
-                                @foreach (var item in Model.lstNewItems)
+                                @foreach (var item in Model.NewItem)
                                 {
                                     <div class="product-box">
                                         <partial name="ItemBox" model="@item" />
                                     </div>
-                                } *@
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="banner-tools">
-                    <img src="~/Fontend/images/offer-banner1.jpg" alt="" class="img-fluid">
+                    <img src="~/frontend/images/offer-banner1.jpg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>

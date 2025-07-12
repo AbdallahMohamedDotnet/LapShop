@@ -1,4 +1,5 @@
 using LapShopv2.Models;
+using LapShopv2.Models.IContract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using LapShopv2.BL;
@@ -20,7 +21,8 @@ namespace LapShopv2
             builder.Services.AddScoped<I_DB_TB_category, ClsCategories>();
             builder.Services.AddScoped<I_DB_ItemType, ClsItemTypes>();
             builder.Services.AddScoped<I_DB_Os, ClsOs>();
-
+            // setup the dependency injection for the Objects data models
+            builder.Services.AddScoped<IVmHomePage , VmHomePage >();
             var app = builder.Build(); 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
