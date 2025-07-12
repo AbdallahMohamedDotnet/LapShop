@@ -15,4 +15,3 @@ C:\Users\Abdallah Mohamed\Source\Repos\BL\obj\Debug\net9.0\refint\BL.dll
 C:\Users\Abdallah Mohamed\Source\Repos\BL\obj\Debug\net9.0\BL.pdb
 C:\Users\Abdallah Mohamed\Source\Repos\BL\obj\Debug\net9.0\BL.genruntimeconfig.cache
 C:\Users\Abdallah Mohamed\Source\Repos\BL\obj\Debug\net9.0\ref\BL.dll
-C:\Users\Abdallah Mohamed\Source\Repos\BL\obj\Debug\net9.0\BL.sourcelink.json
