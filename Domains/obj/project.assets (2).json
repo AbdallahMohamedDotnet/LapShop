@@ -1985,21 +1985,6 @@
             "rid": "win"
           }
         }
-      },
-      "Domains/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Core": "2.3.0",
-          "Microsoft.EntityFrameworkCore": "9.0.7",
-          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.7"
-        },
-        "compile": {
-          "bin/placeholder/Domains.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Domains.dll": {}
-        }
       }
     }
   },
@@ -5447,16 +5432,10 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Domains/1.0.0": {
-      "type": "project",
-      "path": "../Domains/Domains.csproj",
-      "msbuildProject": "../Domains/Domains.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Domains >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.3.0",
       "Microsoft.EntityFrameworkCore >= 9.0.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.7",
@@ -5470,11 +5449,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Abdallah Mohamed\\source\\repos\\BL\\BL.csproj",
-      "projectName": "BL",
-      "projectPath": "C:\\Users\\Abdallah Mohamed\\source\\repos\\BL\\BL.csproj",
+      "projectUniqueName": "C:\\Users\\Abdallah Mohamed\\Source\\Repos\\Domains\\Domains.csproj",
+      "projectName": "Domains",
+      "projectPath": "C:\\Users\\Abdallah Mohamed\\Source\\Repos\\Domains\\Domains.csproj",
       "packagesPath": "C:\\Users\\Abdallah Mohamed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Abdallah Mohamed\\source\\repos\\BL\\obj\\",
+      "outputPath": "C:\\Users\\Abdallah Mohamed\\Source\\Repos\\Domains\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5495,11 +5474,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "C:\\Users\\Abdallah Mohamed\\source\\repos\\Domains\\Domains.csproj": {
-              "projectPath": "C:\\Users\\Abdallah Mohamed\\source\\repos\\Domains\\Domains.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
