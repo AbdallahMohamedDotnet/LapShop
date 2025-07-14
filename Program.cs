@@ -1,9 +1,12 @@
-using LapShopv2.Models;
-using LapShopv2.Models.IContract;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using BL.Icontract;
 using LapShopv2.BL;
 using LapShopv2.BL.Icontract;
+using LapShopv2.Models;
+using LapShopv2.Models.IContract;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using static BL.ItemImage;
 namespace LapShopv2
 {
     public class Program
@@ -21,6 +24,7 @@ namespace LapShopv2
             builder.Services.AddScoped<I_DB_TB_category, ClsCategories>();
             builder.Services.AddScoped<I_DB_ItemType, ClsItemTypes>();
             builder.Services.AddScoped<I_DB_Os, ClsOs>();
+            builder.Services.AddScoped<IItemImages, ClsItemImages>();
             // setup the dependency injection for the Objects data models
             builder.Services.AddScoped<IVmHomePage , VmHomePage >();
             var app = builder.Build(); 
@@ -61,7 +65,7 @@ namespace LapShopv2
                 pattern: "ali/{controller=Home}/{action=Index}/{id?}");
 
             }
-            );
+                        );
             #endregion
 
             //app.MapControllerRoute(
