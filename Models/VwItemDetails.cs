@@ -2,7 +2,7 @@
 using LapShopv2.Models.IContract;
 namespace LapShopv2.Models
 {
-    public class VmItemDetails
+    public class VmItemDetails : IWmItemDetails
     {
         public VmItemDetails()
         {

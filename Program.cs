@@ -27,6 +27,11 @@ namespace LapShopv2
             builder.Services.AddScoped<IItemImages, ClsItemImages>();
             // setup the dependency injection for the Objects data models
             builder.Services.AddScoped<IVmHomePage , VmHomePage >();
+
+            builder.Services.AddSession();
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddDistributedMemoryCache();
+
             var app = builder.Build(); 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -43,7 +48,7 @@ namespace LapShopv2
 
             app.MapStaticAssets();
 
-
+            app.UseSession();
 
             #region Routing
             app.UseEndpoints(endpoints =>
@@ -59,11 +64,6 @@ namespace LapShopv2
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
-                name: "ali",
-                pattern: "ali/{controller=Home}/{action=Index}/{id?}");
-
             }
                         );
             #endregion
