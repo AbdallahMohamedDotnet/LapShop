@@ -28,7 +28,7 @@ namespace LapShopv2.Areas.admin.Controllers
         public IActionResult List()
         {
             ViewBag.lstCategories = oClsCategories.GetAll();
-            var items = oClsItem.GetAllItemData(null);
+            var items = oClsItem.GetAllItemData(null).Take(20).ToList();
             return View(items);
         }
 

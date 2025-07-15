@@ -4,9 +4,14 @@ using LapShopv2.BL.Icontract;
 using LapShopv2.Models;
 using LapShopv2.Models.IContract;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using static BL.ItemImage;
+
 namespace LapShopv2
 {
     public class Program
@@ -17,85 +22,69 @@ namespace LapShopv2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
             // setup the dependency injection for the database context and repositories
-            builder.Services.AddDbContext<MyDbContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<MyDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // secure website with identity features
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            })
+            .AddEntityFrameworkStores<MyDbContext>()
+            .AddDefaultTokenProviders();
+
             // setup the dependency injection for the repositories
             builder.Services.AddScoped<I_DB_TBItem, ClsItem>();
             builder.Services.AddScoped<I_DB_TB_category, ClsCategories>();
             builder.Services.AddScoped<I_DB_ItemType, ClsItemTypes>();
             builder.Services.AddScoped<I_DB_Os, ClsOs>();
             builder.Services.AddScoped<IItemImages, ClsItemImages>();
-            // setup the dependency injection for the Objects data models
-            builder.Services.AddScoped<IVmHomePage , VmHomePage >();
+            builder.Services.AddScoped<IVmHomePage, VmHomePage>();
 
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddDistributedMemoryCache();
+        
+            var app = builder.Build();
 
-            var app = builder.Build(); 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
-            app.MapStaticAssets();
-
             app.UseSession();
 
             #region Routing
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                name: "admin",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    name: "admin",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                name: "LandingPages",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}");
+                    name: "LandingPages",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}");
 
                 endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            }
-                        );
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
             #endregion
-
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller=Home}/{action=Index}/{id?}")
-            //    .WithStaticAssets();
-            //app.MapAreaControllerRoute(
-            //    name: "admin",
-            //    areaName: "admin",
-            //    pattern: "admin/{controller=Home}/{action=Index}/{id?}")
-            //    .WithStaticAssets();
-            //app.MapAreaControllerRoute(
-            //    name: "categories",
-            //    areaName: "admin",
-            //    pattern: "admin/{controller=categories}/{action=List}/{id?}")
-            //    .WithStaticAssets();
-            //app.MapAreaControllerRoute(
-            //    name: "categories",
-            //    areaName: "admin",
-            //    pattern: "admin/{controller=categories}/{action=Save}/{id?}")
-            //    .WithStaticAssets();
-            //app.MapAreaControllerRoute(
-            //    name: "categories",
-            //    areaName: "admin",
-            //    pattern: "admin/{controller=categories}/{action=Edit}/{id?}")
-            //    .WithStaticAssets();
 
             app.Run();
         }
     }
 }
-
 
