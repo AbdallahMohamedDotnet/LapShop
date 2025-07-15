@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using LapShopv2.Models;
 namespace LapShopv2.Models;
 
-public partial class MyDbContext : IdentityDbContext<IdentityUser>
+public partial class MyDbContext : IdentityDbContext 
 {
     public MyDbContext()
     {
@@ -18,6 +19,8 @@ public partial class MyDbContext : IdentityDbContext<IdentityUser>
     {
     }
 
+
+    
 
 
     public virtual DbSet<TbBusinessInfo> TbBusinessInfos { get; set; }
@@ -74,9 +77,7 @@ public partial class MyDbContext : IdentityDbContext<IdentityUser>
     { 
         base.OnModelCreating(modelBuilder);
 
-       // modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
-
-        
+        // modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
 
         modelBuilder.Entity<TbBusinessInfo>(entity =>
         {
