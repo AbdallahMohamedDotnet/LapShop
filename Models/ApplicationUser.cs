@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace LapShopv2.Models
 {
-    public class ApplicationUser : IdentityUser
-    {
-        [Required(ErrorMessage = "First name is required.")]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
+
+        public class ApplicationUser : IdentityUser
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+        }
+    
 }
