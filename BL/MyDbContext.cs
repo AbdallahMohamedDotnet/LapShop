@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domains;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Domains;
+using System;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 namespace LapShopv2.Models;
 
-public partial class MyDbContext : DbContext
+public partial class MyDbContext : IdentityDbContext<IdentityUser>
 {
-     public MyDbContext()
+    public MyDbContext()
     {
     }
 
@@ -15,7 +18,7 @@ public partial class MyDbContext : DbContext
     {
     }
 
-    
+
 
     public virtual DbSet<TbBusinessInfo> TbBusinessInfos { get; set; }
 
@@ -47,7 +50,7 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<TbSupplier> TbSuppliers { get; set; }
 
-    public virtual DbSet<TBSettings> TBSettings{ get; set; }
+    public virtual DbSet<TBSettings> TBSettings { get; set; }
 
     public virtual DbSet<VwItem> VwItems { get; set; }
 
@@ -60,17 +63,20 @@ public partial class MyDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-           
+
         }
-    }  
+    }
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
 
-       
+    { 
+        base.OnModelCreating(modelBuilder);
+
+       // modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
+
+        
 
         modelBuilder.Entity<TbBusinessInfo>(entity =>
         {

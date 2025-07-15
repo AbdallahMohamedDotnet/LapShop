@@ -3,21 +3,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LapShopv2.Migrations
+namespace BL.Migrations
 {
     /// <inheritdoc />
-    public partial class firstmigration : Migration
+    public partial class f : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-           
         }
     }
 }
