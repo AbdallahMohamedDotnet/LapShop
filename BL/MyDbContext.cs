@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 using LapShopv2.Models;
 namespace LapShopv2.Models;
 
-public partial class MyDbContext : IdentityDbContext 
+public partial class MyDbContext : IdentityDbContext<ApplicationUser>
 {
     public MyDbContext()
     {
@@ -63,12 +63,8 @@ public partial class MyDbContext : IdentityDbContext
 
     public virtual DbSet<VwSalesInvoice> VwSalesInvoices { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-
-        }
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+     => optionsBuilder.UseSqlServer("Server=abdallah;Database=LapShop;Trusted_Connection=True;TrustServerCertificate=Yes");
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263
 
 
