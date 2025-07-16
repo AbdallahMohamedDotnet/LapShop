@@ -1,5 +1,6 @@
 ﻿using LapShopv2.BL.Icontract;
 using LapShopv2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -56,6 +57,12 @@ namespace LapShopv2.Controllers
             HttpContext.Response.Cookies.Append("Cart", JsonConvert.SerializeObject(cart));
 
             return RedirectToAction("Cart");
+        }
+        
+        public IActionResult OrderSuccess()
+        {
+
+            return View();
         }
     }
 }

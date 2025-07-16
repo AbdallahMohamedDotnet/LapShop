@@ -3,6 +3,7 @@ using LapShopv2.BL;
 using LapShopv2.BL.Icontract;
 using LapShopv2.Models;
 using LapShopv2.Utlities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace LapShopv2.Areas.admin.Controllers
 {
     [Area("admin")]
+
     public class ItemsController : Controller
     {
         public ItemsController(I_DB_TBItem item , I_DB_TB_category category , I_DB_ItemType itemType  , I_DB_Os os)

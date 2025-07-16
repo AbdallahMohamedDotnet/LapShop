@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Http.Metadata;
 using LapShopv2.Utlities;
 using Domains;
 using LapShopv2.BL.Icontract;
+using Microsoft.AspNetCore.Authorization;
 namespace LapShopv2.Areas.admin.Controllers
 {
-    [Area("admin")]
+   [Area("admin")]
     public class CategoriesController : Controller
     {
         public CategoriesController(I_DB_TB_category category)

@@ -27,6 +27,10 @@ namespace LapShopv2
             builder.Services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+
+
+
             // secure website with identity features
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -50,7 +54,16 @@ namespace LapShopv2
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddDistributedMemoryCache();
-        
+            // Configure session options and cookie settings
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Users/Login";
+                //options.LogoutPath = "/Users/Logout";
+                options.AccessDeniedPath = "/Users/AccessDenied";
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                options.SlidingExpiration = true;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

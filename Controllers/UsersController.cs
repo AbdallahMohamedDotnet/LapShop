@@ -10,20 +10,20 @@ namespace LapShopv2.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        
-        public UsersController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager)
+
+        public UsersController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
         }
 
-        [HttpGet] 
+        [HttpGet]
         public IActionResult Login()
         {
             return View(new UserModel());
         }
 
-        
+
 
 
         [HttpGet]
@@ -37,17 +37,18 @@ namespace LapShopv2.Controllers
         public async Task<IActionResult> Register(UserModel model)
         {
             if (!ModelState.IsValid)
-                return View("Register", model);
-            try {
+               return View("Register", model);
+            try
+            {
                 ApplicationUser user = new ApplicationUser();
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.Email = model.Email;
                 user.UserName = model.Email;
-            var result = await _userManager.CreateAsync(user, model.Password);
-            // the await keyword is used to asynchronously wait for the task to complete (make pause until the task is done)
+                var result = await _userManager.CreateAsync(user, model.Password);
+                // the await keyword is used to asynchronously wait for the task to complete (make pause until the task is done)
 
-            if (result.Succeeded)
+                if (result.Succeeded)
                 {
                     //var loginResult = await _signInManager.PasswordSignInAsync(user, model.Password);
                     //if (loginResult.Succeeded)
@@ -70,7 +71,7 @@ namespace LapShopv2.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Registration failed: " + ex.Message);
             }
-            
+
             return View(model);
         }
     }

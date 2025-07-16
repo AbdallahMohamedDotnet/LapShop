@@ -15,6 +15,6 @@ namespace LapShopv2.Models
         [Required]
         public string Password { get; set; }
 
-        
+
     }
 }

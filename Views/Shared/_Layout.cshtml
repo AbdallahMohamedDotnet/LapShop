@@ -1,4 +1,4 @@
-﻿@* @inject SignInManager<ApplicationUser> sinInManager *@
+﻿﻿@* @inject SignInManager<ApplicationUser> sinInManager *@
 <!DOCTYPE html>
 
 <html lang="en">
@@ -31,7 +31,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="~/frontend/css/color19.css" media="screen" id="color">
 
-        @RenderSection("Styles",required:false);
+    @RenderSection("Styles", required: false);
 </head>
 <body>
 
@@ -437,7 +437,6 @@
     <footer class="footer-light">
         <div class="light-layout">
             <div class="container">
-
             </div>
         </div>
         <section class="section-b-space light-layout">
@@ -1591,7 +1590,7 @@
 
     <script src="~/modules/helper.js"></script>
     <script src="~/modules/settings.js"></script>
-    @RenderSection("Scripts",required:false);
+    @RenderSection("Scripts", required: false);
     @*    <script>
     $(window).on('load', function() {
     setTimeout(function() {
