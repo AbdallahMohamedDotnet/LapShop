@@ -1,3 +1,4 @@
+using BL;
 using BL.Icontract;
 using LapShopv2.BL;
 using LapShopv2.BL.Icontract;
@@ -50,6 +51,10 @@ namespace LapShopv2
             builder.Services.AddScoped<I_DB_Os, ClsOs>();
             builder.Services.AddScoped<IItemImages, ClsItemImages>();
             builder.Services.AddScoped<IVmHomePage, VmHomePage>();
+            builder.Services.AddScoped<ISalesInvoice, ClsSalesInvoice>();
+            builder.Services.AddScoped<ISalesInvoiceItems, ClsSalesInvoiceItems>();
+            builder.Services.AddScoped<ISettings, ClsSettings>();
+            builder.Services.AddScoped<ISliders, ClsSliders>();
 
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
