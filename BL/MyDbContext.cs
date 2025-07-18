@@ -331,13 +331,7 @@ public partial class MyDbContext : IdentityDbContext<ApplicationUser>
         });
         modelBuilder.Entity<TBSettings>(entity =>
         {
-            entity.HasKey(e => e.id);
-            entity.Property(e => e.Logo);
-            entity.Property(e => e.instegramLink);
-            entity.Property(e => e.WhatsAppLink);
-            entity.Property(e => e.FaceBookLink);
-            entity.Property(e => e.WebSiteDescription).HasMaxLength(500);
-            entity.Property(e => e.webSiteName).HasMaxLength(100);
+            entity.HasKey(e => e.Id);
         });
 
         OnModelCreatingPartial(modelBuilder);
