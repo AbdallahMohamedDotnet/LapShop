@@ -1,7 +1,6 @@
-﻿using LapShopv2.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using LapShopv2.Models;
 namespace LapShopv2.Controllers
 {
     public class UsersController : Controller
@@ -14,15 +13,27 @@ namespace LapShopv2.Controllers
             this._userManager = userManager;
             this._signInManager = signInManager;
         }
+        public IActionResult Login(string returnUrl)
+        {
+            UserModel model = new UserModel()
+            {
+                ReturnUrl = returnUrl
+            };
+            return View(model);
+        }
+
+
+        public async Task<IActionResult> LoginOut()
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect("~/");
+        }
 
         [HttpGet]
         public IActionResult Login()
         {
             return View(new UserModel());
         }
-
-
-
 
         [HttpGet]
         public IActionResult Register()
@@ -66,6 +77,38 @@ namespace LapShopv2.Controllers
 
             }
             return View(new UserModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(UserModel model)
+        {
+            // in this step till collecting the user data from the view
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = model.Email,
+                UserName = model.Email
+            };
+            try
+            {
+                // check if the user is already registered
+                var loginResult = await _signInManager.PasswordSignInAsync(user.Email, model.Password, true, true);
+                if (loginResult.Succeeded)
+                {
+                    if (string.IsNullOrEmpty(model.ReturnUrl))
+                        return Redirect("~/");
+                    else
+                        return Redirect(model.ReturnUrl);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(new UserModel());
+        }
+        // to handling authorization issues and handiling cases when the user is not authorized to access a specific page
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
