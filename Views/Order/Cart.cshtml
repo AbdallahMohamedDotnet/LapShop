@@ -1,4 +1,4 @@
-﻿@model shoppingCartItem
+﻿@model ShoppingCart
 
 <!-- breadcrumb start -->
 <div class="breadcrumb-section">
@@ -38,11 +38,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.L_shoppingCartItem)
+                        @foreach (var item in Model.lstItems)
                         {
                             <tr>
                                 <td>
-                                    <a href="#"><img src="~/Uploads/Items/@item.ItemImage" alt=""></a>
+                                    <a href="#"><img src="~/Uploads/Items/@item.ImageName" alt=""></a>
                                 </td>
                                 <td>
                                     <a href="#">@item.ItemName</a>
@@ -51,7 +51,7 @@
                                             <div class="qty-box">
                                                 <div class="input-group">
                                                     <input type="text" name="quantity" class="form-control input-number qty"
-                                                       value="1">
+                                                           value="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -66,21 +66,21 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>$@item.ItemPrice</h2>
+                                    <h2>$@item.Price</h2>
                                 </td>
                                 <td>
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <input type="number" name="quantity"
-                                               class="form-control input-number qty"
-                                               data-id="@item.ItemId" data-price="@item.ItemPrice"
-                                               value="@item.ItemQuantity" onkeyup="ChangeQty(this)">
+                                                   class="form-control input-number qty"
+                                                   data-id="@item.ItemId" data-price="@item.Price"
+                                                   value="@item.Qty" onkeyup="ChangeQty(this)">
                                         </div>
                                     </div>
                                 </td>
                                 <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
                                 <td>
-                                    <h2 data-id="@item.ItemId" class="td-color totalPrice">@item.ItemTotalPrice</h2>
+                                    <h2 data-id="@item.ItemId" class="td-color totalPrice">@item.Total</h2>
                                 </td>
                             </tr>
                         }
@@ -92,7 +92,7 @@
                         <tr>
                             <td>total price :</td>
                             <td>
-                                <h2 id="OverAllTotal">$@Model.ItemTotalPrice</h2>
+                                <h2 id="OverAllTotal">$@Model.Total</h2>
                             </td>
                         </tr>
                     </tfoot>
@@ -107,29 +107,29 @@
 </section>
 <!--section end-->
 @section Scripts
-    {
+{
 
 
     <script>
-    function ChangeQty(input) {
-        let id = $(input).data("id");
-        let price = $(input).data("price");
-        let qty = $(input).val();
-        let OverAllTotal = 0;
-        $(".totalPrice").each(function(i) {
+        function ChangeQty(input) {
+            let id = $(input).data("id");
+            let price = $(input).data("price");
+            let qty = $(input).val();
+            let OverAllTotal = 0;
+            $(".totalPrice").each(function(i) {
 
-            if ($(this).data("id") === id) {
-                $(this).html(price * qty);
-            }
-           // alert($(this).html());
-            OverAllTotal =OverAllTotal+ parseFloat( $(this).text());
+                if ($(this).data("id") === id) {
+                    $(this).html(price * qty);
+                }
+                alert($(this).html());
+                OverAllTotal =OverAllTotal+ parseFloat( $(this).text());
+                console.log(OverAllTotal);
+            });
             console.log(OverAllTotal);
-        });
-        console.log(OverAllTotal);
-        $("#OverAllTotal").html(OverAllTotal);
+            $("#OverAllTotal").html(OverAllTotal);
 
-        // ajax resuest
-    }
+            // ajax resuest
+        }
     </script>
 
 }

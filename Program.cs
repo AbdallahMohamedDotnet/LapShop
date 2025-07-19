@@ -55,6 +55,7 @@ namespace LapShopv2
             builder.Services.AddScoped<ISalesInvoiceItems, ClsSalesInvoiceItems>();
             builder.Services.AddScoped<ISettings, ClsSettings>();
             builder.Services.AddScoped<ISliders, ClsSliders>();
+            builder.Services.AddScoped<IApiResponse, ApiResponse>();
 
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
